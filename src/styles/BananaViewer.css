@@ -1,0 +1,26 @@
+.viewer-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+}
+
+.viewer-card {
+  border-radius: 0.25em;
+  border: 3px solid #000;
+  min-width: 20vw;
+  min-height: 20vw;
+  background-color: #fff;
+}
+
+.viewer-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.example-select {
+  margin: 5px 0;
+  width: 10rem;
+  padding: 0.5em;
+  font-family: "Space Mono", monospace;
+}
