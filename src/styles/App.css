@@ -2,6 +2,18 @@
   width: 100%;
 }
 
+.bold {
+  font-weight: 600;
+}
+
+.accent {
+  color: #e24f5b;
+}
+
+.heading {
+  font-family: "Space Mono", monospace;
+}
+
 .app {
   height: 100%;
 }
@@ -47,23 +59,12 @@
   font-size: 1.5em;
 }
 
+.stats .disclaimer {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
 .stats h2 {
   margin: 0;
   font-size: 2em;
-}
-
-.left {
-  text-align: left;
-}
-
-.right {
-  text-align: right;
-}
-
-.accent {
-  color: #e24f5b;
-}
-
-.heading {
-  font-family: "Space Mono", monospace;
 }
