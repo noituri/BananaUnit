@@ -1,31 +1,17 @@
 import { ChangeEvent, ReactElement, useState } from 'react';
-import { Example } from '../models/example';
-import '../styles/BananaViewer.css'
+import { EXAMPLES } from '../models/example';
+import '../styles/ViewerContainer.css'
+import Viewer from './Viewer';
 
 
-export default function BananaViewer() {
+export default function ViewerContainer() {
   const [example, setExample] = useState("");
 
   const onSelect = (e: ChangeEvent<HTMLSelectElement>) => setExample(e.target.value);
 
-  const Viewer = (): ReactElement => {
-    if (example == "") {
-      return (
-        <div className="viewer-placeholder">
-          <p>Press to upload new image to measure</p>
-        </div>
-      );
-    } else {
-      return <img src={example} alt="An image with detected objects" />;
-    }
-  }
-
   return (
     <div className="viewer-container">
-
-      <div className="viewer-card">
-        <Viewer />
-      </div>
+      <Viewer imgSrc={example} data={EXAMPLES[example]} />
       <select className='example-select' onChange={onSelect}>
         <option value="">Choose example</option>
         <option value="example-1.png">Example 1</option>

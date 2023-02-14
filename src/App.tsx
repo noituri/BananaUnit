@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BananaViewer from "./components/BananaViewer";
+import BananaViewer from "./components/ViewerContainer";
 import "./styles/App.css";
 
 function App() {

@@ -1,6 +1,7 @@
-import { DetectedObject } from "./detectedObject";
+import { DetectedObject, XCoord, YCoord } from "./detectedObject";
 
 export interface AnalizeResult {
     banana?: DetectedObject,
-    objects: [DetectedObject]
+    objects: Array<DetectedObject>
+    imageSize: [XCoord, YCoord]
 }

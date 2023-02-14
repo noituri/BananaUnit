@@ -1,9 +1,11 @@
-type XCoord = number;
-type YCoord = number;
+export type XCoord = number;
+export type YCoord = number;
 
 export interface DetectedObject {
   label: string;
-  box: [XCoord, YCoord, XCoord, YCoord];
+  coord: [XCoord, YCoord];
+  width: number,
+  height: number,
   confidence: number;
   banana_scale: [XCoord, YCoord];
 }
