@@ -35,4 +35,16 @@
 
 .viewer-boxes rect {
   opacity: 50%;
+  transition: opacity 0.2s;
+}
+
+.viewer-boxes .box:hover > * {
+  opacity: 100%;
+  transition: opacity 0.2s;
+}
+
+
+.viewer-boxes text {
+  opacity: 0;
+  font-family: "Space Mono", monospace;
 }

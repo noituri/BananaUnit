@@ -22,16 +22,17 @@ export default function Viewer({imgSrc, data}: ViewerProps) {
   const [yScale, setYScale] = useState(1);
 
   useLayoutEffect(() => {
-    if (ref.current == null) {
+    const size = ref.current;
+    if (size == null) {
       return;
     }
 
-    setXScale(ref.current!.offsetWidth / data!.imageSize[0]);
-    setYScale(ref.current!.offsetHeight / data!.imageSize[1]);
+    setXScale(size!.offsetWidth / data!.imageSize[0]);
+    setYScale(size!.offsetHeight / data!.imageSize[1]);
   }, []);
   
-  const banana = data!.banana && <Box key="main-banana" obj={data.banana!} xScale={xScale} yScale={yScale} />;
-  const boxes = data?.objects.map(o => <Box key={o.label} obj={o} xScale={xScale} yScale={yScale} />);
+  const banana = data!.banana && <Box key="main-banana" obj={data.banana!} xScale={xScale} yScale={yScale} isRef={true} />;
+  const boxes = data?.objects.map(o => <Box key={o.label} obj={o} xScale={xScale} yScale={yScale} isRef={false}/>);
 
   return (
     <div ref={ref} className="viewer-card">

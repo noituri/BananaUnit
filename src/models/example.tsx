@@ -27,24 +27,10 @@ export const EXAMPLES: {[key: string]: AnalizeResult} = {
                 "height": 210.66000000000003,
                 "confidence": 0.994,
                 "banana_scale": [
-                    1.110428849902534,
-                    0.8995260258764253
+                    1.11,
+                    0.89
                 ]
             },
-            {
-                "label": "bed",
-                "coord": [
-                    0.04,
-                    -0.54
-                ],
-                "width": 514.98,
-                "height": 510.63,
-                "confidence": 0.989,
-                "banana_scale": [
-                    1.254824561403509,
-                    2.1804090695589053
-                ]
-            }
         ],
         "imageSize": [515, 511]
     }
