@@ -1,21 +1,37 @@
 import { useState } from "react";
 import Stats from "./components/Stats";
 import BananaViewer from "./components/ViewerContainer";
+import { AnalizeResult } from "./models/analize";
 import { EXAMPLES } from "./models/example";
 import "./styles/App.css";
 
 function App() {
+  const [data, setData] = useState<AnalizeResult | undefined>(undefined);
+
+  const onDataChange = (
+    imgSrc: string,
+    isExample: boolean
+  ): AnalizeResult | undefined => {
+    if (isExample) {
+      const example = EXAMPLES[imgSrc];
+      setData(example);
+      return example;
+    }
+  };
+
   return (
     <div className="app">
       <div className="front">
         <div className="container">
           <h1>Measure things with bananas 🍌</h1>
-          <BananaViewer />
-          {/* If viewer not empty */}
+          <BananaViewer onChange={onDataChange} />
           <button className="measure-button">Upload</button>
-          <div className="stats">
-            <Stats {...EXAMPLES["example-1.png"]} />
-          </div>
+          {/* TODO move to Stats component */}
+          {data && (
+            <div className="stats">
+              <Stats {...data} />
+            </div>
+          )}
         </div>
       </div>
 

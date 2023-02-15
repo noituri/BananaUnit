@@ -1,0 +1,26 @@
+.stats-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: stretch;
+    gap: 15px
+}
+
+.stats-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    font-family: "Space Mono", monospace;
+}
+
+.stats-labels > * {
+    margin: 0;
+}
+
+.stats-areas {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

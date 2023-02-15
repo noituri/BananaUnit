@@ -8,7 +8,7 @@ export interface BoxProps {
 }
 
 export default function Box({ obj, xScale, yScale, isRef }: BoxProps) {
-  const labelSize = 28;
+  const labelSize = 24;
 
   const x = obj.coord[0] * xScale;
   const y = obj.coord[1] * yScale;
@@ -27,18 +27,16 @@ export default function Box({ obj, xScale, yScale, isRef }: BoxProps) {
         stroke={`rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 1.0)`}
         strokeWidth={3}
       ></rect>
-      <text x={x + width / 2} y={y + height / 2} text-anchor="middle">
-        {obj.label}
+      
+      <text x={x + width / 2} y={y + height / 2} textAnchor="middle">
+        {isRef && "reference"} {obj.label}
       </text>
-
       <text
         x={x + width / 2}
         y={y + height / 2 + labelSize}
-        text-anchor="middle"
+        textAnchor="middle"
       >
-        {isRef
-          ? "reference"
-          : `${obj.banana_scale[0]} x ${obj.banana_scale[1]}🍌`}
+        {obj.banana_scale[0].toFixed(2)} x {obj.banana_scale[1].toFixed(2)}🍌
       </text>
     </g>
   );
