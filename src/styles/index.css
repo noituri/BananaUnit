@@ -41,25 +41,6 @@ select {
   border-radius: .25em;
 }
 
-button {
-  border-radius: 8px;
-  border: 3px solid #000;
-  padding: 0.6em 1.2em;
-  font-size: 1.5em;
-  font-weight: 500;
-  font-family: inherit;
-  color: #000;
-  background-color: #FD7E89;
-  cursor: pointer;
-  transition: transform 0.25s;
-}
-
-button:hover {
-}
-button:active {
-  transform: scale(95%);
-}
-
 nav {
   color: #000;
   margin: 10px 10px;

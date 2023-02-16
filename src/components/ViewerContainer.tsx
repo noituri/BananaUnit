@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactElement, useState } from "react";
+import { ChangeEvent, ReactElement, Ref, useState } from "react";
 import { AnalizeResult } from "../models/analize";
 import { EXAMPLES } from "../models/example";
 import "../styles/ViewerContainer.css";
@@ -6,10 +6,12 @@ import Viewer from "./Viewer";
 
 export interface ViewerContainerProps {
   onChange: (imgData: string, isExample: boolean) => AnalizeResult | undefined,
+  imgRef: Ref<HTMLImageElement>
 }
 
 export default function ViewerContainer({
   onChange,
+  imgRef,
 }: ViewerContainerProps) {
   const [example, setExample] = useState("");
   const [data, setData] = useState<AnalizeResult | undefined>(undefined);
@@ -22,7 +24,7 @@ export default function ViewerContainer({
 
   return (
     <div className="viewer-container">
-      <Viewer imgSrc={example} data={data} />
+      <Viewer key={example} imgSrc={example} imgRef={imgRef} data={data} />
       <select className="example-select" onChange={onSelect}>
         {/* TODO: Load from EXAMPLES */}
         <option value="">Choose example</option>

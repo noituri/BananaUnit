@@ -16,6 +16,24 @@
   object-fit: cover;
 }
 
+.loader-container {
+  position: absolute;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0);
+  transition: opacity 0.2s;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  pointer-events: none;
+}
+
+.loader-container[data-isloading=true] {
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: background-color 0.2s;
+}
+
 .viewer-placeholder {
   font-size: 24px;
   max-width: 400px;
@@ -31,6 +49,13 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.viewer-boxes[data-isloading=true] {
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .viewer-boxes rect {

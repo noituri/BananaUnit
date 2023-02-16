@@ -12,7 +12,7 @@ export default function Stats({ banana, objects }: AnalizeResult) {
     <Progress key={o.label} obj={o} max={biggestArea} />
   ));
   return (
-    <div>
+    <div className="stats">
       <h2>How many banans can we fit?</h2>
       <div className="stats-container">
         <div className="stats-labels">

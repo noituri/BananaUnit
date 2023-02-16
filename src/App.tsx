@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
+import { useMutation } from "react-query";
+import Footer from "./components/Footer";
 import Stats from "./components/Stats";
 import BananaViewer from "./components/ViewerContainer";
-import { AnalizeResult } from "./models/analize";
+import { AnalizeResult, fetchResult } from "./models/analize";
 import { EXAMPLES } from "./models/example";
 import "./styles/App.css";
 
 function App() {
   const [data, setData] = useState<AnalizeResult | undefined>(undefined);
+  const mutation = useMutation(fetchResult);
+  const imgRef = useRef(null);
 
   const onDataChange = (
     imgSrc: string,
@@ -17,6 +21,19 @@ function App() {
       setData(example);
       return example;
     }
+
+    // const { data, error} = useQuery(["measurements", imgSrc], fetchResult)
+    // return data;
+  };
+
+  const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.files![0]);
+    if (e.target.files == null || e.target.files!.length == 0) {
+      return;
+    }
+    const file = e.target.files![0];
+    mutation.mutate(file);
+    // const { data, error} = useQuery<AnalizeResult>(["measurements", file], () => fetchResult(file));
   };
 
   return (
@@ -24,33 +41,15 @@ function App() {
       <div className="front">
         <div className="container">
           <h1>Measure things with bananas 🍌</h1>
-          <BananaViewer onChange={onDataChange} />
-          <button className="measure-button">Upload</button>
-          {/* TODO move to Stats component */}
-          {data && (
-            <div className="stats">
-              <Stats {...data} />
-            </div>
-          )}
+          <BananaViewer onChange={onDataChange} imgRef={imgRef} />
+          <label htmlFor="upload-input" className="measure-button">Upload</label>
+          <input id="upload-input" type="file" onChange={onUpload}></input>
+
+          {data && <Stats {...data} />}
         </div>
       </div>
 
-      <div className="info">
-        <section className="container">
-          <h1 className="heading">Banana Unit</h1>
-          <p>
-            <span className="bold">BananaUnit</span> introduces a new and
-            innovative way to measure with a universal and standardized system
-            based on bananas 🍌. This not only makes measurement{" "}
-            <span className="accent">practical</span> but also{" "}
-            <span className="accent">fun</span>,{" "}
-            <span className="accent"> accessible</span> and{" "}
-            <span className="accent"> creative</span> for everyone. Join us in
-            revolutionizing measurement!
-          </p>
-          <p className="disclaimer">Disclaimer: website made as a joke</p>
-        </section>
-      </div>
+      <Footer />
     </div>
   );
 }
