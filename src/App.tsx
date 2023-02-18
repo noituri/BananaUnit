@@ -8,22 +8,28 @@ import { EXAMPLES } from "./models/example";
 import "./styles/App.css";
 
 function App() {
+  const [imgSrc, setImgSrc] = useState("");
   const [data, setData] = useState<AnalizeResult | undefined>(undefined);
-  const mutation = useMutation(fetchResult);
+  const mutation = useMutation(fetchResult, {
+    onSuccess: (data, variables, context) => {
+      setData(data);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgSrc(reader.result as string);
+        // console.log(reader.result);
+      }, false);
+      
+      reader.readAsDataURL(variables);
+    },
+  });
   const imgRef = useRef(null);
 
-  const onDataChange = (
-    imgSrc: string,
-    isExample: boolean
-  ): AnalizeResult | undefined => {
+  const onExampleChange = (imgSrc: string, isExample: boolean) => {
     if (isExample) {
       const example = EXAMPLES[imgSrc];
       setData(example);
-      return example;
+      setImgSrc(imgSrc);
     }
-
-    // const { data, error} = useQuery(["measurements", imgSrc], fetchResult)
-    // return data;
   };
 
   const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +38,8 @@ function App() {
       return;
     }
     const file = e.target.files![0];
+    // TODO: Fix uploading the same image twice not working
     mutation.mutate(file);
-    // const { data, error} = useQuery<AnalizeResult>(["measurements", file], () => fetchResult(file));
   };
 
   return (
@@ -41,8 +47,15 @@ function App() {
       <div className="front">
         <div className="container">
           <h1>Measure things with bananas 🍌</h1>
-          <BananaViewer onChange={onDataChange} imgRef={imgRef} />
-          <label htmlFor="upload-input" className="measure-button">Upload</label>
+          <BananaViewer
+            onExampleChange={onExampleChange}
+            imgSrc={imgSrc}
+            imgRef={imgRef}
+            data={data}
+          />
+          <label htmlFor="upload-input" className="measure-button">
+            Upload
+          </label>
           <input id="upload-input" type="file" onChange={onUpload}></input>
 
           {data && <Stats {...data} />}

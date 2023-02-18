@@ -5,26 +5,28 @@ import "../styles/ViewerContainer.css";
 import Viewer from "./Viewer";
 
 export interface ViewerContainerProps {
-  onChange: (imgData: string, isExample: boolean) => AnalizeResult | undefined,
+  onExampleChange: (imgData: string, isExample: boolean) => void,
+  imgSrc: string,
+  data?: AnalizeResult
   imgRef: Ref<HTMLImageElement>
 }
 
 export default function ViewerContainer({
-  onChange,
+  onExampleChange,
+  imgSrc,
+  data,
   imgRef,
 }: ViewerContainerProps) {
   const [example, setExample] = useState("");
-  const [data, setData] = useState<AnalizeResult | undefined>(undefined);
 
   const onSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     setExample(e.target.value);
-    const newData = onChange(e.target.value, e.target.value != "");
-    setData(newData);
+    onExampleChange(e.target.value, e.target.value != "");
   }
 
   return (
     <div className="viewer-container">
-      <Viewer key={example} imgSrc={example} imgRef={imgRef} data={data} />
+      <Viewer key={example} imgSrc={imgSrc} imgRef={imgRef} data={data} />
       <select className="example-select" onChange={onSelect}>
         {/* TODO: Load from EXAMPLES */}
         <option value="">Choose example</option>

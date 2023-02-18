@@ -26,10 +26,13 @@ export default function Viewer({ imgSrc, data, imgRef }: ViewerProps) {
   const [yScale, setYScale] = useState(1);
   const [isImgLoading, setImgLoading] = useState(true);
   const isDataLoading = useIsMutating() > 0;
+  console.log({isDataLoading});
+  console.log({isImgLoading});
+  console.log(imgSrc);
 
   const adjustScale = () => {
     const size = ref.current;
-    if (size == null) {
+    if (size == null || data == null) {
       return;
     }
 
@@ -38,6 +41,7 @@ export default function Viewer({ imgSrc, data, imgRef }: ViewerProps) {
   };
 
   const onImageLoad = () => {
+    console.info("Img loaded");
     adjustScale();
     setImgLoading(false);
   };
@@ -67,7 +71,6 @@ export default function Viewer({ imgSrc, data, imgRef }: ViewerProps) {
   const boxes = data?.objects.map((o) => (
     <Box key={o.label} obj={o} xScale={xScale} yScale={yScale} isRef={false} />
   ));
-
   return (
     <div ref={ref} className="viewer-card">
       <svg className="viewer-boxes" data-isloading={isDataLoading || isImgLoading}>
@@ -77,7 +80,6 @@ export default function Viewer({ imgSrc, data, imgRef }: ViewerProps) {
       <img
         src={imgSrc}
         ref={imgRef}
-        // itemType="file"
         alt="An image with detected objects"
         onLoad={onImageLoad}
       />
