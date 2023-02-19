@@ -1,5 +1,7 @@
 import { AnalizeResult } from "./analize";
 
+export const DEFAULT_EXAMPLE = "example-1.png";
+
 export const EXAMPLES: { [key: string]: AnalizeResult } = {
   "example-1.png": {
     banana: {

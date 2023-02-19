@@ -5,33 +5,29 @@ import "../styles/ViewerContainer.css";
 import Viewer from "./Viewer";
 
 export interface ViewerContainerProps {
-  onExampleChange: (imgData: string, isExample: boolean) => void,
-  imgSrc: string,
-  data?: AnalizeResult
-  imgRef: Ref<HTMLImageElement>
+  imgSrc: string;
+  data?: AnalizeResult;
+  showLoading: boolean;
 }
 
 export default function ViewerContainer({
-  onExampleChange,
   imgSrc,
   data,
-  imgRef,
+  showLoading,
 }: ViewerContainerProps) {
-  const [example, setExample] = useState("");
-
-  const onSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-    setExample(e.target.value);
-    onExampleChange(e.target.value, e.target.value != "");
-  }
+  const examples = Object.keys(EXAMPLES).map((e, i) => <option value={e} selected={e === imgSrc}>Example {i+1} </option>);
 
   return (
     <div className="viewer-container">
-      <Viewer key={example} imgSrc={imgSrc} imgRef={imgRef} data={data} />
-      <select className="example-select" onChange={onSelect}>
-        {/* TODO: Load from EXAMPLES */}
+      <Viewer
+        key={imgSrc}
+        imgSrc={imgSrc}
+        data={data}
+        showLoading={showLoading}
+      />
+      <select className="example-select">
         <option value="">Choose example</option>
-        <option value="example-1.png">Example 1</option>
-        <option value="example-2.jpg">Example 2</option>
+        {examples}
       </select>
     </div>
   );

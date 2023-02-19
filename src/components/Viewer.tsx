@@ -1,14 +1,4 @@
-import {
-  MutableRefObject,
-  PropsWithChildren,
-  ReactElement,
-  Ref,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
-import { useIsMutating } from "react-query";
+import { MutableRefObject, useLayoutEffect, useRef, useState } from "react";
 import { SquareLoader } from "react-spinners";
 import { AnalizeResult } from "../models/analize";
 import "../styles/Viewer.css";
@@ -16,19 +6,15 @@ import Box from "./Box";
 
 export interface ViewerProps {
   imgSrc: string;
+  showLoading: boolean;
   data?: AnalizeResult;
-  imgRef: Ref<HTMLImageElement>
 }
 
-export default function Viewer({ imgSrc, data, imgRef }: ViewerProps) {
+export default function Viewer({ imgSrc, data, showLoading }: ViewerProps) {
   const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [xScale, setXScale] = useState(1);
   const [yScale, setYScale] = useState(1);
   const [isImgLoading, setImgLoading] = useState(true);
-  const isDataLoading = useIsMutating() > 0;
-  console.log({isDataLoading});
-  console.log({isImgLoading});
-  console.log(imgSrc);
 
   const adjustScale = () => {
     const size = ref.current;
@@ -41,24 +27,12 @@ export default function Viewer({ imgSrc, data, imgRef }: ViewerProps) {
   };
 
   const onImageLoad = () => {
-    console.info("Img loaded");
     adjustScale();
     setImgLoading(false);
   };
 
   useLayoutEffect(adjustScale, []);
 
-  if (!isDataLoading && data == null) {
-    return (
-      <div className="viewer-card">
-        <p className="viewer-placeholder">
-          Press to upload new image to measure
-        </p>
-      </div>
-    );
-  }
-
-  // TODO: Handle no banana
   const banana = data?.banana && (
     <Box
       key="main-banana"
@@ -73,18 +47,20 @@ export default function Viewer({ imgSrc, data, imgRef }: ViewerProps) {
   ));
   return (
     <div ref={ref} className="viewer-card">
-      <svg className="viewer-boxes" data-isloading={isDataLoading || isImgLoading}>
+      <svg
+        className="viewer-boxes"
+        data-isloading={showLoading || isImgLoading}
+      >
         {banana}
         {boxes}
       </svg>
-      <img
+      { imgSrc !== "" && <img
         src={imgSrc}
-        ref={imgRef}
         alt="An image with detected objects"
         onLoad={onImageLoad}
-      />
+      /> }
 
-      <Loader isLoading={isDataLoading || isImgLoading} />
+      <Loader isLoading={showLoading || isImgLoading} />
     </div>
   );
 }
