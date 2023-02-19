@@ -36,7 +36,7 @@ export default function Box({ obj, xScale, yScale, isRef }: BoxProps) {
         y={y + height / 2 + labelSize}
         textAnchor="middle"
       >
-        {obj.banana_scale[0].toFixed(2)} x {obj.banana_scale[1].toFixed(2)}🍌
+        {obj.banana_scale ? `${obj.banana_scale[0].toFixed(2)} x ${obj.banana_scale[1].toFixed(2)}🍌` : "No reference banana"}
       </text>
     </g>
   );

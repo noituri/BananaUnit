@@ -7,5 +7,5 @@ export interface DetectedObject {
   width: number,
   height: number,
   confidence: number;
-  banana_scale: [XCoord, YCoord];
+  banana_scale?: [XCoord, YCoord];
 }

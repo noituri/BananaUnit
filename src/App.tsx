@@ -11,6 +11,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<AnalizeResult>(EXAMPLES[DEFAULT_EXAMPLE]);
 
+  const onExampleSelect = (example: string) => {
+    setData(EXAMPLES[example] ?? EXAMPLES[DEFAULT_EXAMPLE]);
+    setImgSrc(example === "" ? DEFAULT_EXAMPLE : example);
+  };
 
   const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files == null || e.target.files!.length == 0) {
@@ -19,14 +23,21 @@ function App() {
 
     const file = e.target.files![0];
     setIsLoading(true);
-    fetchResult(file).then(result => {
+    fetchResult(file).then((result) => {
+      console.log(result);
       setData(result);
       setIsLoading(false);
+
+      // Load file
       const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        setImgSrc(reader.result as string);
-      }, false);
-      
+      reader.addEventListener(
+        "load",
+        () => {
+          setImgSrc(reader.result as string);
+        },
+        false
+      );
+
       reader.readAsDataURL(file);
     });
   };
@@ -40,6 +51,7 @@ function App() {
             imgSrc={imgSrc}
             data={data}
             showLoading={isLoading}
+            onExampleSelect={onExampleSelect}
           />
           <label htmlFor="upload-input" className="measure-button">
             Upload

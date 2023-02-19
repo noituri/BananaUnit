@@ -8,10 +8,10 @@ export default function Stats({ banana, objects }: AnalizeResult) {
   }
 
   if (banana == null) {
-    return <h3 className="stats stats-error">Reference banana wasn't found :(</h3>
+    return <h3 className="stats stats-error">Reference banana not found :(</h3>
   }
   
-  const biggestArea = objects[0].banana_scale[0] * objects[0].banana_scale[1];
+  const biggestArea = objects[0].banana_scale![0] * objects[0].banana_scale![1];
   const objectsLabels = objects.map((o) => (
     <h3 key={o.label}>{o.label}</h3>
   ));
