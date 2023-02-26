@@ -18,6 +18,7 @@
 .loader-container {
   position: absolute;
   display: flex;
+  flex-direction: column;
   background-color: rgba(255, 255, 255, 0);
   transition: opacity 0.2s;
   width: 100%;
@@ -26,22 +27,13 @@
   justify-content: center;
   transition: background-color 0.2s;
   pointer-events: none;
+  opacity: 0;
 }
 
 .loader-container[data-isloading=true] {
+  opacity: 1;
   background-color: rgba(255, 255, 255, 0.7);
   transition: background-color 0.2s;
-}
-
-.viewer-placeholder {
-  font-size: 24px;
-  max-width: 400px;
-  text-align: center;
-  font-family: "Space Mono", monospace;
-}
-
-.viewer-placeholder p {
-  color: #666666;
 }
 
 .viewer-boxes {
@@ -70,5 +62,4 @@
 
 .viewer-boxes text {
   opacity: 0;
-  font-family: "Space Mono", monospace;
 }

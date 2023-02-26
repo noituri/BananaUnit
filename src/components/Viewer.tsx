@@ -48,7 +48,7 @@ export default function Viewer({ imgSrc, data, showLoading }: ViewerProps) {
   return (
     <div ref={ref} className="viewer-card">
       <svg
-        className="viewer-boxes"
+        className="viewer-boxes secondary-font"
         data-isloading={showLoading || isImgLoading}
       >
         {banana}
@@ -69,6 +69,7 @@ function Loader({ isLoading }: { isLoading: boolean }) {
   return (
     <div className="loader-container" data-isloading={isLoading}>
       <SquareLoader className="loader" color="#FD7E89" loading={isLoading} />
+      <p>This may take a while</p>
     </div>
   );
 }

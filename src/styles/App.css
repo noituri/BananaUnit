@@ -10,7 +10,7 @@
   color: #e24f5b;
 }
 
-.heading {
+.secondary-font {
   font-family: "Space Mono", monospace;
 }
 
@@ -20,7 +20,7 @@
 
 .front {
   background-color: #FFF798;
-  min-height: calc(100vh - 60px); /*figure out a better way*/
+  min-height: calc(100vh - 60px); /* TODO: figure out a better way*/
   margin-bottom: 20px;
 }
 

@@ -27,7 +27,7 @@ export default function ViewerContainer({
         data={data}
         showLoading={showLoading}
       />
-      <select className="example-select" value={imgSrc} onChange={e => onExampleSelect(e.target.value)}>
+      <select className="example-select secondary-font" value={imgSrc} onChange={e => onExampleSelect(e.target.value)}>
         <option value="">Choose example</option>
         {examples}
       </select>

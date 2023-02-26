@@ -8,11 +8,11 @@ export interface ProgressProps {
 
 export default function Progress({ obj, max }: ProgressProps) {
   const area = parseFloat(
-    (obj.banana_scale[0] * obj.banana_scale[1]).toFixed(2)
+    (obj.banana_scale![0] * obj.banana_scale![1]).toFixed(2)
   );
 
   return (
-    <div className="progress-bar">
+    <div className="progress-bar secondary-font">
       <div
         className="progress-bar-inner"
         style={{ width: (area / max) * 100 + "%" }}

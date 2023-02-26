@@ -20,7 +20,6 @@
   flex-direction: column;
   justify-content: start;
   gap: 10px;
-  font-family: "Space Mono", monospace;
 }
 
 .stats-labels > * {

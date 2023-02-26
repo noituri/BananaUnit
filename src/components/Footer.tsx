@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="info">
       <section className="container">
-        <h1 className="heading">Banana Unit</h1>
+        <h1 className="secondary-font">Banana Unit</h1>
         <p>
           <span className="bold">BananaUnit</span> introduces a new and
           innovative way to measure with a universal and standardized system

@@ -23,7 +23,7 @@ export default function Stats({ banana, objects }: AnalizeResult) {
     <div className="stats">
       <h2>Object Comparison in Banana Units</h2>
       <div className="stats-container">
-        <div className="stats-labels">
+        <div className="stats-labels secondary-font">
           {objectsLabels}
         </div>
         <div className="stats-areas">

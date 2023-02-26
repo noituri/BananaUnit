@@ -6,8 +6,9 @@ export interface AnalizeResult {
   imageSize: [XCoord, YCoord];
 }
 
+// TODO: Handle errors
 export function fetchResult(file: File): Promise<AnalizeResult> {
-  return fetch("http://localhost:8080/banana-scale", {
+  return fetch("http://localhost:5000/banana-scale", {
     method: "POST",
     body: file,
     headers: {

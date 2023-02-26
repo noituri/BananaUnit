@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Footer from "./components/Footer";
 import Stats from "./components/Stats";
 import BananaViewer from "./components/ViewerContainer";
@@ -6,6 +6,12 @@ import { AnalizeResult, fetchResult } from "./models/analize";
 import { DEFAULT_EXAMPLE, EXAMPLES } from "./models/example";
 import "./styles/App.css";
 
+
+// TODO: Use useContext
+// TODO: Cleanup imports
+// TODO: Add repo link
+// TODO: Readme file
+// TODO: Add Icon
 function App() {
   const [imgSrc, setImgSrc] = useState(DEFAULT_EXAMPLE);
   const [isLoading, setIsLoading] = useState(false);
