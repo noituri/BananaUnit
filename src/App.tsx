@@ -26,13 +26,13 @@ function App() {
     const file = e.target.files![0];
     setIsLoading(true);
     fetchResult(file).then((result) => {
-      if (result.isOk) {
-        setData(result.data);
-      } else {
-        toast.error(result.data.error);
-      }
       setIsLoading(false);
+      if (!result.isOk) {
+        toast.error(result.data.error);
+        return
+      }
 
+      setData(result.data);
       // Load file
       const reader = new FileReader();
       reader.addEventListener(
@@ -58,6 +58,7 @@ function App() {
             showLoading={isLoading}
             onExampleSelect={onExampleSelect}
           />
+
           <label htmlFor="upload-input" className="measure-button">
             Upload
           </label>
