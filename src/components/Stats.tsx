@@ -1,8 +1,8 @@
-import { AnalizeResult } from "../models/analize";
+import { AnalizeData } from "../models/analize";
 import Progress from "./Progress";
 import "../styles/Stats.css"
 
-export default function Stats({ banana, objects }: AnalizeResult) {
+export default function Stats({ banana, objects }: AnalizeData) {
   if (objects.length === 0) {
     return <h3 className="stats stats-error">Unfortunately, no objects were found :(</h3>;
   }

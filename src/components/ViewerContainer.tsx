@@ -1,12 +1,12 @@
 import { ChangeEvent, ReactElement, Ref, useState } from "react";
-import { AnalizeResult } from "../models/analize";
+import { AnalizeData } from "../models/analize";
 import { DEFAULT_EXAMPLE, EXAMPLES } from "../models/example";
 import "../styles/ViewerContainer.css";
 import Viewer from "./Viewer";
 
 export interface ViewerContainerProps {
   imgSrc: string;
-  data?: AnalizeResult;
+  data?: AnalizeData;
   showLoading: boolean;
   onExampleSelect: (example: string) => void
 }

@@ -1,8 +1,8 @@
-import { AnalizeResult } from "./analize";
+import { AnalizeData } from "./analize";
 
 export const DEFAULT_EXAMPLE = "example-1.png";
 
-export const EXAMPLES: { [key: string]: AnalizeResult } = {
+export const EXAMPLES: { [key: string]: AnalizeData } = {
   "example-1.png": {
     banana: {
       label: "banana",

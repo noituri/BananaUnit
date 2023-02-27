@@ -1,13 +1,13 @@
 import { MutableRefObject, useLayoutEffect, useRef, useState } from "react";
 import { SquareLoader } from "react-spinners";
-import { AnalizeResult } from "../models/analize";
+import { AnalizeData } from "../models/analize";
 import "../styles/Viewer.css";
 import Box from "./Box";
 
 export interface ViewerProps {
   imgSrc: string;
   showLoading: boolean;
-  data?: AnalizeResult;
+  data?: AnalizeData;
 }
 
 export default function Viewer({ imgSrc, data, showLoading }: ViewerProps) {

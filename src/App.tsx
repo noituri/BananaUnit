@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
+import { toast } from "react-toastify";
 import Footer from "./components/Footer";
 import Stats from "./components/Stats";
 import BananaViewer from "./components/ViewerContainer";
-import { AnalizeResult, fetchResult } from "./models/analize";
+import { AnalizeData, fetchResult } from "./models/analize";
 import { DEFAULT_EXAMPLE, EXAMPLES } from "./models/example";
 import "./styles/App.css";
 
@@ -15,7 +16,7 @@ import "./styles/App.css";
 function App() {
   const [imgSrc, setImgSrc] = useState(DEFAULT_EXAMPLE);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<AnalizeResult>(EXAMPLES[DEFAULT_EXAMPLE]);
+  const [data, setData] = useState<AnalizeData>(EXAMPLES[DEFAULT_EXAMPLE]);
 
   const onExampleSelect = (example: string) => {
     setData(EXAMPLES[example] ?? EXAMPLES[DEFAULT_EXAMPLE]);
@@ -30,8 +31,11 @@ function App() {
     const file = e.target.files![0];
     setIsLoading(true);
     fetchResult(file).then((result) => {
-      console.log(result);
-      setData(result);
+      if (result.isOk) {
+          setData(result.data);
+      } else {
+        toast.error(result.data.error);
+      }
       setIsLoading(false);
 
       // Load file
