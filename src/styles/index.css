@@ -1,9 +1,7 @@
-/* TODO: Clean up css files */
-
 :root {
-  --primary-color: #FD7E89;
+  --primary-color: #fd7e89;
   --secondary-color: #000;
-  --bg-color: #FFF798;
+  --bg-color: #fff798;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -29,22 +27,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-select {
-  background-color: #fff;
-  color: var(--secondary-color);
-  border: 3px solid var(--secondary-color);
-  border-radius: .25em;
-}
-
-nav {
-  color: var(--secondary-color);
-  margin: 10px 10px;
-}
-
-nav h2 {
-  margin: 0;
 }
 
 p {

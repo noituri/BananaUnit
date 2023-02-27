@@ -30,7 +30,7 @@
   opacity: 0;
 }
 
-.loader-container[data-isloading=true] {
+.loader-container[data-isloading="true"] {
   opacity: 1;
   background-color: rgba(255, 255, 255, 0.7);
   transition: background-color 0.2s;
@@ -44,7 +44,7 @@
   transition: opacity 0.2s;
 }
 
-.viewer-boxes[data-isloading=true] {
+.viewer-boxes[data-isloading="true"] {
   opacity: 0;
   transition: opacity 0.2s;
 }
@@ -58,7 +58,6 @@
   opacity: 100%;
   transition: opacity 0.2s;
 }
-
 
 .viewer-boxes text {
   opacity: 0;

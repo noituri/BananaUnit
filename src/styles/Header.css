@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--secondary-color);
+  margin: 10px 10px;
+}
+
+nav h2 {
+  margin: 0;
+}
+
+a,
+a:visited {
+  color: var(--secondary-color);
+}

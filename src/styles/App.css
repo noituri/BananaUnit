@@ -19,8 +19,8 @@
 }
 
 .front {
-  background-color: #FFF798;
-  min-height: calc(100vh - 60px); /* TODO: figure out a better way*/
+  background-color: #fff798;
+  min-height: calc(100vh - 60px);
   margin-bottom: 20px;
 }
 
@@ -61,10 +61,6 @@
   text-align: center;
 }
 
-.card {
-  padding: 2em;
-}
-
 .measure-button {
   margin-top: 10px;
   border-radius: 8px;
@@ -74,7 +70,7 @@
   font-weight: 500;
   font-family: inherit;
   color: #000;
-  background-color: #FD7E89;
+  background-color: #fd7e89;
   cursor: pointer;
   transition: transform 0.25s;
 }

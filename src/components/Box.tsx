@@ -14,7 +14,9 @@ export default function Box({ obj, xScale, yScale, isRef }: BoxProps) {
   const y = obj.coord[1] * yScale;
   const width = obj.width * xScale;
   const height = obj.height * yScale;
+  // If used as a reference, use a different color
   const rgb = isRef ? [255, 248, 154] : [253, 138, 138];
+  const scale = obj.banana_scale?.map((s) => s.toFixed(2));
 
   return (
     <g className="box" fontSize={labelSize}>
@@ -27,7 +29,7 @@ export default function Box({ obj, xScale, yScale, isRef }: BoxProps) {
         stroke={`rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 1.0)`}
         strokeWidth={3}
       ></rect>
-      
+
       <text x={x + width / 2} y={y + height / 2} textAnchor="middle">
         {isRef && "reference"} {obj.label}
       </text>
@@ -36,7 +38,7 @@ export default function Box({ obj, xScale, yScale, isRef }: BoxProps) {
         y={y + height / 2 + labelSize}
         textAnchor="middle"
       >
-        {obj.banana_scale ? `${obj.banana_scale[0].toFixed(2)} x ${obj.banana_scale[1].toFixed(2)}🍌` : "No reference banana"}
+        {scale ? `${scale[0]} x ${scale[1]}🍌` : "No reference banana"}
       </text>
     </g>
   );

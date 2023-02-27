@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { DetectedObject, XCoord, YCoord } from "./detectedObject";
 
 type AnalizeResult =
@@ -15,6 +14,7 @@ interface AnalizeError {
   error: string;
 }
 
+// TODO: Use ENV 
 export function fetchResult(file: File): Promise<AnalizeResult> {
   return fetch("http://localhost:5000/banana-scale", {
     method: "POST",

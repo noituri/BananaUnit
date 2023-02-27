@@ -54,11 +54,13 @@ export default function Viewer({ imgSrc, data, showLoading }: ViewerProps) {
         {banana}
         {boxes}
       </svg>
-      { imgSrc !== "" && <img
-        src={imgSrc}
-        alt="An image with detected objects"
-        onLoad={onImageLoad}
-      /> }
+      {imgSrc !== "" && (
+        <img
+          src={imgSrc}
+          alt="An image with detected objects"
+          onLoad={onImageLoad}
+        />
+      )}
 
       <Loader isLoading={showLoading || isImgLoading} />
     </div>

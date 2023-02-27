@@ -12,3 +12,10 @@
   width: 10rem;
   padding: 0.5em;
 }
+
+select {
+  background-color: #fff;
+  color: var(--secondary-color);
+  border: 3px solid var(--secondary-color);
+  border-radius: 0.25em;
+}

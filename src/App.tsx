@@ -7,12 +7,7 @@ import { AnalizeData, fetchResult } from "./models/analize";
 import { DEFAULT_EXAMPLE, EXAMPLES } from "./models/example";
 import "./styles/App.css";
 
-
-// TODO: Use useContext
-// TODO: Cleanup imports
-// TODO: Add repo link
 // TODO: Readme file
-// TODO: Add Icon
 function App() {
   const [imgSrc, setImgSrc] = useState(DEFAULT_EXAMPLE);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +27,7 @@ function App() {
     setIsLoading(true);
     fetchResult(file).then((result) => {
       if (result.isOk) {
-          setData(result.data);
+        setData(result.data);
       } else {
         toast.error(result.data.error);
       }
