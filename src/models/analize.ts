@@ -1,5 +1,7 @@
 import { DetectedObject, XCoord, YCoord } from "./detectedObject";
 
+const API_ENDPOINT = import.meta.env.VITE_API_URL;
+
 type AnalizeResult =
   | { isOk: true; data: AnalizeData }
   | { isOk: false; data: AnalizeError };
@@ -14,9 +16,8 @@ interface AnalizeError {
   error: string;
 }
 
-// TODO: Use ENV 
 export function fetchResult(file: File): Promise<AnalizeResult> {
-  return fetch("http://localhost:5000/banana-scale", {
+  return fetch(`${API_ENDPOINT}/banana-scale`, {
     method: "POST",
     body: file,
     headers: {
