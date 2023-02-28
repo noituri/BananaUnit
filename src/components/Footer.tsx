@@ -13,7 +13,6 @@ export default function Footer() {
           <span className="accent"> creative</span> for everyone. Join us in
           revolutionizing measurement!
         </p>
-        <p className="disclaimer">Disclaimer: website made as a joke</p>
       </section>
     </footer>
   );

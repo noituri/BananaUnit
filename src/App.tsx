@@ -7,7 +7,6 @@ import { AnalizeData, fetchResult } from "./models/analize";
 import { DEFAULT_EXAMPLE, EXAMPLES } from "./models/example";
 import "./styles/App.css";
 
-// TODO: Readme file
 function App() {
   const [imgSrc, setImgSrc] = useState(DEFAULT_EXAMPLE);
   const [isLoading, setIsLoading] = useState(false);
