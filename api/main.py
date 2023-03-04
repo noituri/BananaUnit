@@ -50,6 +50,7 @@ def banana_scale():
         confidence = round(score.item(), 3)
         obj = DetectedObject(object_label, box, confidence)
         if obj.label == 'banana' and (banana is None or banana.confidence < confidence):
+            obj.banana_scale = (1.0, 1.0)
             banana = obj
         else:
             objects.append(obj)
